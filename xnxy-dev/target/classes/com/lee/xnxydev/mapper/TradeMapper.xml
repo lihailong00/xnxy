@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lee.xnxydev.mapper.TradeMapper">
+
+    <resultMap id="BaseResultMap" type="com.lee.xnxydev.pojo.Trade">
+        <id property="gId" column="g_id" jdbcType="BIGINT"/>
+        <result property="uId" column="u_id" jdbcType="BIGINT"/>
+        <result property="goodsName" column="goods_name" jdbcType="VARCHAR"/>
+        <result property="goodsDesc" column="goods_desc" jdbcType="VARCHAR"/>
+        <result property="goodsImage" column="goods_image" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="DECIMAL"/>
+        <result property="hasDeleted" column="has_deleted" jdbcType="TINYINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="ip" column="ip" jdbcType="VARCHAR"/>
+        <result property="ipArea" column="ip_area" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        g_id,u_id,goods_name,
+        goods_desc,goods_image,price,
+        has_deleted,create_time,ip,
+        ip_area,type
+    </sql>
+    <select id="listGoods" resultType="com.lee.xnxydev.pojo.Trade">
+        SELECT * FROM trade WHERE MATCH(goods_name) against(#{keyword}) AND type=#{type} AND has_deleted=0 ORDER BY
+        <if test="cond1=='time'">
+            create_time DESC
+        </if>
+        <if test="cond1=='price'">
+            price
+        </if>
+        LIMIT ${(count - 1) * 30}, 30
+    </select>
+</mapper>

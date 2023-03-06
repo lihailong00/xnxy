@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lee.xnxydev.mapper.LifeMapper">
+
+    <resultMap id="BaseResultMap" type="com.lee.xnxydev.pojo.Life">
+            <id property="pId" column="p_id" jdbcType="BIGINT"/>
+            <result property="uId" column="u_id" jdbcType="BIGINT"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="content" column="content" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="hasDeleted" column="has_deleted" jdbcType="TINYINT"/>
+            <result property="ip" column="ip" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        p_id,u_id,title,
+        content,type,create_time,
+        has_deleted,ip
+    </sql>
+    <select id="listPost" resultType="com.lee.xnxydev.pojo.Life">
+        SELECT * FROM life WHERE MATCH(title) against(#{keyword}) AND type=#{type} AND has_deleted=0 LIMIT ${(count - 1) * 30}, 30
+    </select>
+
+</mapper>

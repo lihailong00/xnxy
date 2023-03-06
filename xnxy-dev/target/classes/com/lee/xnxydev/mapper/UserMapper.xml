@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lee.xnxydev.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.lee.xnxydev.pojo.User">
+        <id property="uId" column="u_id" jdbcType="BIGINT"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="jwcUsername" column="jwc_username" jdbcType="VARCHAR"/>
+        <result property="jwcPassword" column="jwc_password" jdbcType="VARCHAR"/>
+        <result property="sessionKey" column="session_key" jdbcType="VARCHAR"/>
+        <result property="openid" column="openid" jdbcType="VARCHAR"/>
+        <result property="photoImg" column="photo_img" jdbcType="VARCHAR"/>
+        <result property="createtime" column="createTime" jdbcType="TIMESTAMP"/>
+        <result property="hasDeleted" column="has_deleted" jdbcType="TINYINT"/>
+        <result property="deletedtime" column="deletedTime" jdbcType="TIMESTAMP"/>
+        <result property="classTable" column="class_table" jdbcType="VARCHAR"/>
+        <result property="scoreTable" column="score_table" jdbcType="VARCHAR"/>
+        <result property="power" column="power" jdbcType="INTEGER"/>
+        <result property="lastVisitJwc" column="last_visit_jwc" jdbcType="TIMESTAMP"/>
+        <result property="realName" column="real_name" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        u_id,username,jwc_username,
+        jwc_password,session_key,openid,
+        photo_img,createTime,has_deleted,
+        deletedTime,class_table,score_table,
+        power,last_visit_jwc,real_name,
+        gender
+    </sql>
+</mapper>

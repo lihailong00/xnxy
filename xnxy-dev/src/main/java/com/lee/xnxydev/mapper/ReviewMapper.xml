@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lee.xnxydev.mapper.ReviewMapper">
+
+    <resultMap id="BaseResultMap" type="com.lee.xnxydev.pojo.Review">
+        <id property="rId" column="r_id" jdbcType="BIGINT"/>
+        <result property="pId" column="p_id" jdbcType="BIGINT"/>
+        <result property="uId" column="u_id" jdbcType="BIGINT"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="ip" column="ip" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        r_id,p_id,u_id,
+        content,create_time,ip
+    </sql>
+</mapper>
